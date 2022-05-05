@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>View from the Moon</title>
+</head>
+<body>
+    <canvas id="canvas1" width="640" height="480" style="border: 1px solid black; position:absolute; left:0; top 0; z-index: 1,"></canvas>
+   
+    <canvas id="canvas2" width="640" height="480" style="border: 1px solid black;position: absolute; left: 0; top 0; z-index: 2;"></canvas>
+   
+    <canvas id="canvas3" width="640" height="480" style="border: 1px solid black;position: absolute; left: 0; top 0; z-index: 4;"></canvas>
+   
+    <canvas id="canvas4" width="640" height="480" style="border: 1px solid black;position: absolute; left: 0; top 0; z-index: 3;"></canvas>
+    
+    <canvas id="canvas5" width="640" height="480" style="border: 1px solid black;position: absolute; left: 0; top 0; z-index: 4;"></canvas>
+    
+    <canvas id="canvas6" width="640" height="480" style="border: 1px solid black;position: absolute; left: 0; top 0; z-index: 4;"></canvas>
+<script>
+/*
+Title: View from the moon
+Description: This program will showcase what it looks like from the moon.
+Date: January 18th, 2019
+By: Matthew Grech
+*/
+var layer1 = document.getElementById("canvas1");
+var dt1 = layer1.getContext("2d");
+var layer2 = document.getElementById("canvas2");
+var dt2 = layer2.getContext("2d");
+var layer3 = document.getElementById("canvas3");
+var dt3 = layer3.getContext("2d");
+var layer4 = document.getElementById("canvas4");
+var dt4 = layer4.getContext("2d");
+var layer5 = document.getElementById("canvas5");
+var dt5 = layer5.getContext("2d");
+var layer6 = document.getElementById("canvas6");
+var dt6 = layer6.getContext("2d");
+    
+    //Opening alert
+    alert("You are about to witness the view from the moon created by Matthew Grech!");
+    
+    //prompt
+    var rc= parseFloat(prompt("First, lets chose the colour of the rocket that will appear! Pick from this list of avalible paint jobs." +  "1 = Red"+ ", 2 = Blue" + ", 3 = Purple" + ", 4 = White"));
+    
+    //if, else if, else statments
+    if (rc === 1 )
+    {
+        alert("Great choice!");
+        var spaceshipColour="red";
+    }
+    
+    else if (rc === 2)
+    {
+        alert("Great choice!");
+        var spaceshipColour="blue";
+    }
+    
+    else if (rc === 3 )
+    {
+        alert("Great choice!");
+        var spaceshipColour="purple";
+    }
+    
+    else if (rc === 4 )
+    {
+        alert("Great choice!");
+        var spaceshipColour="white";
+    }
+    
+    else 
+        {
+            alert("Sorry! We seem to be out of that paint. I'll fix you up with a fresh white paint job!");
+        }
+    
+    alert("Wait! Before you travel to the moon you should know a couple things! Move your mouse across the canvas to see particles moving along the screen! Also for a fun surpise, click your mouse a few times :)")
+       
+    //black background
+    dt1.fillStyle = "black";
+    dt1.fillRect(0, 0, 640, 480);
+   
+   //draw moon
+    dt1.fillStyle = "rgb(64, 64, 64)";
+    dt1.beginPath();
+    dt1.arc(320, 980, 600, 0, Math.PI/1, true);
+    dt1.stroke();
+    dt1.fill();
+    //draw details of moon
+    dt1.strokeStyle="rgb(179, 179, 179)";
+    dt1.fillStyle="rgb(179, 179, 179)";
+    dt1.beginPath();
+    dt1.arc(300, 460, 20, 0, 2*Math.PI);
+    dt1.stroke();
+    dt1.fill();
+    
+    dt1.strokeStyle="rgb(179, 179, 179)";
+    dt1.fillStyle="rgb(179, 179, 179)";
+    dt1.beginPath();
+    dt1.arc(200, 420, 23, 0, 2*Math.PI);
+    dt1.stroke();
+    dt1.fill();
+   
+    dt1.strokeStyle="rgb(179, 179, 179)"
+    dt1.fillStyle="rgb(179, 179, 179)"
+    dt1.beginPath()
+    dt1.arc(500, 450, 17, 0, 2*Math.PI);
+    dt1.stroke();
+    dt1.fill();
+    
+    dt1.strokeStyle="rgb(179, 179, 179)";
+    dt1.fillStyle="rgb(179, 179, 179)";
+    dt1.beginPath();
+    dt1.arc(100, 460, 13, 0, 2*Math.PI);
+    dt1.stroke();
+    dt1.fill();
+    
+    dt1.strokeStyle="rgb(179, 179, 179)";
+    dt1.fillStyle="rgb(179, 179, 179)";
+    dt1.beginPath();
+    dt1.arc(400, 430, 30, 0, 2*Math.PI);
+    dt1.stroke();
+    dt1.fill();
+    
+    //star input
+document.addEventListener("click", runFunc);
+ 
+ //fuction for stars
+function runFunc()
+{
+  dt2.clearRect(0, 0, canvas2.width, canvas2.height);
+ 
+    for(var i = 1; i <= 40; i++)//number of stars that appear on canvas
+    {
+     star (Math.floor(Math.random()*640), (Math.random()*200)); //positioning of stars
+    }
+    
+}
+   
+   //drawing the stars
+   function star(xPos, yPos)
+   {
+   dt2.strokeStyle = "black";
+   dt2.fillStyle = "yellow";
+   dt2.lineJoin = "miter";
+   dt2.beginPath();
+   dt2.moveTo(xPos,yPos);
+   dt2.lineTo(xPos+5,yPos+10);
+   dt2.lineTo(xPos+15,yPos+10);
+   dt2.lineTo(xPos+7,yPos+15);
+   dt2.lineTo(xPos+10,yPos+23);
+   dt2.lineTo(xPos,yPos+19);
+   dt2.lineTo(xPos-10,yPos+23);
+   dt2.lineTo(xPos-7,yPos+15);
+   dt2.lineTo(xPos-15,yPos+10);
+   dt2.lineTo(xPos-5,yPos+10);
+   dt2.lineTo(xPos,yPos);
+   dt2.stroke();
+   dt2.closePath();
+   dt2.fill();
+   }
+   
+//animation of spaceship  
+var rectXPos = 0;
+var speed = 5;
+var y = 17
+ 
+setInterval(draw, 30);
+ 
+//draws the spaceship, the trail behind it, and asteriod
+function draw()
+{
+   spaceship();
+   trail();
+    asteroid();
+}
+   
+    //function for spaceship
+function spaceship()
+{
+    
+    //body of spaceship
+    dt3.clearRect(0, 0, layer3.width, layer3.height);
+    dt3.fillStyle = spaceshipColour;
+    dt3.strokeStyle = "black";
+    dt3.fillRect(rectXPos, y, 75, 50);
+    dt3.strokeRect(rectXPos, y, 75, 50);
+    
+    //upper wing
+    dt3.strokeStyle = "darkRed";
+    dt3.fillStyle = "darkRed";
+    dt3.lineWidth = 5;
+    dt3.beginPath();
+    dt3.moveTo(rectXPos, y); 
+    dt3.quadraticCurveTo(rectXPos-30, y-40, rectXPos+80, y);
+    dt3.stroke();
+    dt3.fill();
+    
+   //lower wing
+    dt3.strokeStyle = "darkRed";
+    dt3.fillStyle = "darkRed";
+    dt3.lineWidth = 5;
+    dt3.beginPath();
+    dt3.moveTo(rectXPos+80, y+50);
+    dt3.quadraticCurveTo(rectXPos-30, y+100, rectXPos, y+50);
+    dt3.stroke();
+    dt3.fill();
+   
+   //window
+    dt3.fillStyle= "white"
+    dt3.beginPath();
+    dt3.arc(rectXPos+30, y+20, 4, 0, 2*Math.PI);
+    dt3.stroke();
+    dt3.fill();
+ 
+    rectXPos = rectXPos + speed;
+
+   //keeps spaceship from going off canvas and never coming back
+   if (rectXPos <0 || rectXPos >640)
+        {
+            rectXPos = 0;
+            y=Math.random()*410+1
+            dt5.clearRect(0, 0, canvas5.width, canvas5.height)
+        }
+ 
+}
+   
+   
+    //input to cause particles to activate is a mouse move
+   document.addEventListener("mousemove", runFunc1);
+ 
+ 
+function runFunc1()
+{
+    dt4.clearRect(0, 0, canvas4.width, canvas4.height)//clears canvas
+ 
+    for(var i = 1; i <= 60; i++)//counts number of particles on canvas
+    {
+     particle (Math.floor(Math.random()*640), (Math.random()*250) +25);//postions particles
+    }
+}
+   
+   
+ //function for particles
+   function particle(xPos, yPos)
+   {
+       dt4.fillStyle = "white"
+       dt4.beginPath();
+       dt4.arc(xPos, yPos, 2, 0, 2*Math.PI);
+       dt4.fill();
+   }
+    
+ //function for trail
+   function trail()
+    {
+   dt5.fillStyle = "#ffffff";
+   dt5.fillRect(rectXPos, y+20, 5, 5);
+   dt5.fillRect(rectXPos, y+40, 5, 5);
+   dt5.fillStyle = "red";
+   dt5.fillRect(rectXPos, y+30, 5, 5);
+   dt5.fillRect(rectXPos, y+10, 5, 5);
+        rectXPos = rectXPos +speed;
+    }
+   
+var xPos2 = 0;
+var speed2 = 5;
+var yPos2 = 100;
+    //function for asteriod
+   function asteroid()
+    {
+        //drawing asteriod
+        dt6.clearRect(0, 0, layer6.width, layer6.height);
+        dt6.strokeStyle="grey";
+        dt6.fillStyle="grey";
+        dt6.beginPath();
+        dt6.arc(xPos2, yPos2, 15, 0, 2*Math.PI);
+        dt6.closePath();
+        dt6.stroke();
+        dt6.fill();
+        
+        dt6.strokeStyle="brown";
+        dt6.fillStyle="brown";
+        dt6.beginPath();
+        dt6.arc(xPos2+2, yPos2-10, 4, 0, 2*Math.PI);
+        dt6.closePath();
+        dt6.stroke();
+        dt6.fill();
+        
+        dt6.strokeStyle="brown";
+        dt6.fillStyle="brown";
+        dt6.beginPath();
+        dt6.arc(xPos2+6, yPos2+7, 6, 0, 2*Math.PI);
+        dt6.closePath();
+        dt6.stroke();
+        dt6.fill();
+        
+        dt6.strokeStyle="brown";
+        dt6.fillStyle="brown";
+        dt6.beginPath();
+        dt6.arc(xPos2-8, yPos2-5, 5, 0, 2*Math.PI);
+        dt6.closePath();
+        dt6.stroke();
+        dt6.fill();
+        
+        dt6.strokeStyle="brown";
+        dt6.fillStyle="brown";
+        dt6.beginPath()
+        dt6.arc(xPos2-8, yPos2+8, 3, 0, 2*Math.PI);
+        dt6.closePath();
+        dt6.stroke();
+        dt6.fill();
+        xPos2 = xPos2 +speed2;
+        
+        //keeps asteriod from going off canvas and not coming back
+         if (xPos2 <0 || xPos2 >640)
+        {
+            xPos2 = 0;
+            yPos2=Math.random()*410+1;
+            dt6.clearRect(0, 0, canvas6.width, canvas6.height);
+        }
+ 
+    }
+    
+    //Person named Billy
+    //head of person
+        dt1.fillStyle= "white";
+        dt1.beginPath();
+        dt1.arc(150, 320, 17, 0, 2*Math.PI);
+        dt1.stroke();
+        dt1.fill();
+    
+    //eyes of person
+        dt1.fillStyle= "black";
+        dt1.beginPath();
+        dt1.arc(145, 315, 3, 0, 2*Math.PI);
+        dt1.stroke();
+        dt1.fill();
+        dt1.fillStyle= "black";
+        dt1.beginPath();
+        dt1.arc(160, 315, 3, 0, 2*Math.PI);
+        dt1.stroke();
+        dt1.fill();
+    
+   //body of person 
+        dt1.fillStyle = "white";
+        dt1.fillRect(145, 330, 10, 50);
+    //right arm of person
+        dt1.strokeStyle = "white";
+        dt1.fillStyle= "white";
+        dt1.lineWidth = 4;
+        dt1.beginPath();
+        dt1.moveTo(150, 360);
+        dt1.lineTo(170, 340);
+        dt1.stroke();
+        dt1.fill();
+  //left arm of person
+        dt1.strokeStyle = "white";
+        dt1.fillStyle= "white";
+        dt1.lineWidth = 4;
+        dt1.beginPath();
+        dt1.moveTo(148, 355);
+        dt1.lineTo(130, 340);
+        dt1.stroke();
+        dt1.fill();
+    //left leg of person
+        dt1.strokeStyle = "white";
+        dt1.fillStyle= "white";
+        dt1.lineWidth = 4;
+        dt1.beginPath();
+        dt1.moveTo(148, 377);
+        dt1.lineTo(140, 410);
+        dt1.stroke();
+        dt1.fill();
+   //right leg of person
+        dt1.strokeStyle = "white";
+        dt1.fillStyle= "white";
+        dt1.lineWidth = 4;
+        dt1.beginPath();
+        dt1.moveTo(152, 377);
+        dt1.lineTo(165, 410);
+        dt1.stroke();
+        dt1.fill();
+    
+    
+</script>
+ 
+</body>
+   
+</html>
